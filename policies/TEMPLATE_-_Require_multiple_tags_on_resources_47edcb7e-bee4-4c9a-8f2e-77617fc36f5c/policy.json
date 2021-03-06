@@ -1,0 +1,94 @@
+{
+ "properties": {
+  "displayName": "TEMPLATE - Require multiple tags on resources",
+  "policyType": "Custom",
+  "mode": "Indexed",
+  "description": "Enforces existence of multiple tags. Does not apply to resource groups. Modify template to suit number of required tags.",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "a0886d4b-a7db-4eb8-ae80-332071fb4ce8",
+   "createdOn": "2021-02-15T22:41:07.2033742Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "Tag1Name": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag 1 Name",
+     "description": "Name of the tag, such as 'Environment'"
+    }
+   },
+   "Tag2Name": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag 2 Name",
+     "description": "Name of the tag, such as 'Business Unit'"
+    }
+   },
+   "Tag3Name": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag 3 Name",
+     "description": "Name of the tag, such as 'Business Owner'"
+    }
+   },
+   "Tag4Name": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag 4 Name",
+     "description": "Name of the tag, such as 'Application Owner'"
+    }
+   },
+   "Tag5Name": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag 5 Name",
+     "description": "Name of the tag, such as 'Change Window'"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "anyof": [
+     {
+      "not": {
+       "field": "[concat('tags[', parameters('Tag1Name'), ']')]",
+       "exists": "true"
+      }
+     },
+     {
+      "not": {
+       "field": "[concat('tags[', parameters('Tag2Name'), ']')]",
+       "exists": "true"
+      }
+     },
+     {
+      "not": {
+       "field": "[concat('tags[', parameters('Tag3Name'), ']')]",
+       "exists": "true"
+      }
+     },
+     {
+      "not": {
+       "field": "[concat('tags[', parameters('Tag4Name'), ']')]",
+       "exists": "true"
+      }
+     },
+     {
+      "not": {
+       "field": "[concat('tags[', parameters('Tag5Name'), ']')]",
+       "exists": "true"
+      }
+     }
+    ]
+   },
+   "then": {
+    "effect": "deny"
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/5702f542-8ed2-4422-a818-5a1f3515837a/providers/Microsoft.Authorization/policyDefinitions/47edcb7e-bee4-4c9a-8f2e-77617fc36f5c",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "47edcb7e-bee4-4c9a-8f2e-77617fc36f5c"
+}
