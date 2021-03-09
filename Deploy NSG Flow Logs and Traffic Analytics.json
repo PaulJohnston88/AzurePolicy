@@ -78,7 +78,7 @@
           "type": "Integer"
         }
       },
-      "PolicyRule": {
+      "policyRule": {
         "if": {
           "allOf": [
             {
