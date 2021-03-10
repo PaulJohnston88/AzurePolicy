@@ -1,0 +1,80 @@
+{
+    "mode": "all",
+    "policyRule": {
+        "if": {
+            "allOf":[
+                {
+                    "field": "type",
+                    "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                }
+            ],
+            "anyof":[
+                {
+                    "field": "[concat('tags[', parameters('tag1Name'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag2Name'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag3Name'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag4Name'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag5Name'), ']')]",
+                    "exists": "false"
+                }
+            ]
+        },
+        "then": {
+          "effect": "deny"
+        }
+    },
+    "parameters": {
+      "tag1Name": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag 1 Name",
+          "description": "Name of the tag, such as 'CostCenter'"
+        },
+        "defaultValue": "CostCenter"
+      },
+      "tag2Name": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag 2 Name",
+          "description": "Name of the tag, such as 'ApplicationID'"
+        },
+        "defaultValue": "AppID"
+      },   
+      "tag3Name": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag 3 Name",
+          "description": "Name of the tag, such as 'BusinessOwner'"
+        },
+        "defaultValue": "BusinessOwner"
+      },   
+      "tag4Name": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag 4 Name",
+          "description": "Name of the tag, such as 'ApplicationOwner'"
+        },
+        "defaultValue": "AppOwner"
+      },    
+      "tag5Name": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag 5 Name",
+          "description": "Name of the tag, such as 'MaintenanceWindow'"
+        },
+        "defaultValue": "MaintenanceWindow"
+      }
+    }
+  }

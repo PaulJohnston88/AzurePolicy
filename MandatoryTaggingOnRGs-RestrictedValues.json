@@ -1,0 +1,177 @@
+{
+    "mode": "all",
+    "policyRule": {
+      "if": {
+        "allOf":[
+            {            
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+            }
+        ],
+        "anyof": [
+          {
+            "field": "[concat('tags[', parameters('tag1Name'), ']')]",
+            "notin": "[parameters('tag1Value')]"
+          },
+          {
+            "field": "[concat('tags[', parameters('tag2Name'), ']')]",
+            "notin": "[parameters('tag2Value')]"
+          },
+          {
+            "field": "[concat('tags[', parameters('tag3Name'), ']')]",
+            "notin": "[parameters('tag3Value')]"
+          },
+          {
+            "field": "[concat('tags[', parameters('tag4Name'), ']')]",
+            "notin": "[parameters('tag4Value')]"
+          },
+          {
+            "field": "[concat('tags[', parameters('tag5Name'), ']')]",
+            "notin": "[parameters('tag5Value')]"
+          },
+          {
+            "field": "[concat('tags[', parameters('tag6Name'), ']')]",
+            "notin": "[parameters('tag6Value')]"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {
+      "tag1Name": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag 1 Name",
+          "description": "Name of the tag, such as 'BusinessUnit'"
+        },
+        "defaultValue": "BusinessUnit"
+      },
+      "tag1Value": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Tag 1 Value",
+          "description": "Value of the tag, such as 'ASUX'"
+        },
+        "allowedValues": [
+          "ASUX",
+          "SPS",
+          "Enterprise"
+        ]
+      },
+      "tag2Name": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag 2 Name",
+          "description": "Name of the tag, such as 'Division'"
+        },
+        "defaultValue": "Division"
+      },
+      "tag2Value": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Tag 2 Value",
+          "description": "Value of the tag, such as 'EDS'"
+        },
+        "allowedValues": [
+          "ASUX - GSS",
+          "Engineering",
+          "SPS-CS",
+          "EDS",
+          "Enterprise - ERP",
+          "BI",
+          "Finance",
+          "HR",
+          "Marketing",
+          "SCM"
+        ]
+      },     
+      "tag3Name": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag 3 Name",
+          "description": "Name of the tag, such as 'Division'"
+        },
+        "defaultValue": "Environment"
+      },
+      "tag3Value": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Tag 3 Value",
+          "description": "Value of the tag, such as 'Prod'"
+        },
+        "allowedValues": [
+          "Prod",
+          "Pre-Prod",
+          "DR",
+          "Test",
+          "Dev"
+        ]
+      },     
+      "tag4Name": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag 4 Name",
+          "description": "Name of the tag, such as 'Criticality'"
+        },
+        "defaultValue": "Criticality"
+      },
+      "tag4Value": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Tag 4 Value",
+          "description": "Value of the tag, such as 'Standard'"
+        },
+        "allowedValues": [
+          "Mission Critical",
+          "Business Critical",
+          "Task Critical",
+          "Standard"
+        ]
+      },     
+      "tag5Name": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag 5 Name",
+          "description": "Name of the tag, such as 'DataClassification'"
+        },
+        "defaultValue": "DataClassification"
+      },
+      "tag5Value": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Tag 5 Value",
+          "description": "Value of the tag, such as 'Aptiv Internal'"
+        },
+        "allowedValues": [
+          "Aptiv Secret",
+          "Aptiv Confidential Business",
+          "Aptiv Confidential Personal",
+          "Aptiv Sensitive Business",
+          "Aptiv Sensitive Personal",
+          "Aptiv Internal",
+          "Aptiv Public"
+        ]
+      },      
+      "tag6Name": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag 6 Name",
+          "description": "Name of the tag, such as 'BackupRequired'"
+        },
+        "defaultValue": "BackupRequired"
+      },
+      "tag6Value": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Tag 6 Value",
+          "description": "Value of the tag, such as 'Yes'"
+        },
+        "allowedValues": [
+          "Yes",
+          "No"
+        ]
+      }
+    }
+  }

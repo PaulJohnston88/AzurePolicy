@@ -1,0 +1,53 @@
+{
+    "properties": {
+      "displayName": "Apply Specific NSG - Internal Facing",
+      "policyType": "Custom",
+      "mode": "All",
+      "parameters": {
+        "nsgId": {
+          "type": "Array",
+          "metadata": {
+            "displayName": "NSG Id",
+            "description": "Resource Ids of the allowed Network Security Groups"
+          },
+          "allowedValues": [
+            "/subscriptions/829ac3c2xxxxxxx/resourceGroups/CORP/providers/Microsoft.Network/networkSecurityGroups/-CORP-NEU-NSG-001",
+            "/subscriptions/829ac3c2xxxxxxx/resourceGroups/CORP/providers/Microsoft.Network/networkSecurityGroups/-CORP-WEU-NSG-001"
+          ]
+        }
+      },
+      "policyRule": {
+        "if": {
+          "anyOf": [
+            {
+              "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.Network/virtualNetworks"
+                },
+                {
+                  "field": "Microsoft.Network/virtualNetworks/subnets[*].networkSecurityGroup.id",
+                  "notin": "[parameters('nsgId')]"
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.Network/virtualNetworks/subnets"
+                },
+                {
+                  "field": "Microsoft.Network/virtualNetworks/subnets/networkSecurityGroup.id",
+                  "notin": "[parameters('nsgId')]"
+                }
+              ]
+            }
+          ]
+        },
+        "then": {
+          "effect": "deny"
+        }
+      }
+    }
+  }

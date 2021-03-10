@@ -1,0 +1,235 @@
+{
+    "properties": {
+      "displayName": "TEMPLATE - Only allow creation of approved general resources - APTIV",
+      "policyType": "Custom",
+      "mode": "All",
+      "parameters": {
+        "effect": {
+          "type": "String",
+          "metadata": {
+            "displayName": "effect",
+            "description": "null"
+          },
+          "allowedValues": [
+            "Audit",
+            "Deny",
+            "Disabled"
+          ],
+          "defaultValue": "Deny"
+        }
+      },
+      "policyRule": {
+        "if": {
+          "allOf": [
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Network/applicationGateway*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Network/loadBalancers*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Network/virtualNetworks*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Network/networkWatchers*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Network/networkSecurityGroups*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Network/privateEndpoint*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Network/routeTables*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Network/applicationSecurityGroups*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Network/networkInterfaces*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Compute*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Storage*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.KeyVault*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.AAD*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Sql*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.SqlVirtualMachine*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Resources*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.EventHub*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Logic*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Portal*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.ADHybridHealthService*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Kubernetes*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.KubernetesConfiguration*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.ManagedIdentity*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.ContainerRegistry*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.ApiManagement*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Databricks*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.DataFactory*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Security*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Web*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.OperationalInsights*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Insights*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Authorization*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Advisor*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.GuestConfiguration*"
+              }
+            }
+          ]
+        },
+        "then": {
+          "effect": "[parameters('effect')]"
+        }
+      }
+    }
+  }
