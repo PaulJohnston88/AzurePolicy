@@ -11,28 +11,30 @@
                 {
                     "field": "type",
                     "equals": "Microsoft.Resources/subscriptions/resourceGroups"
-                }
-            ],
-            "anyof":[
-                {
-                    "field": "[concat('tags[', parameters('tag1Name'), ']')]",
-                    "exists": "false"
                 },
                 {
-                    "field": "[concat('tags[', parameters('tag2Name'), ']')]",
-                    "exists": "false"
-                },
-                {
-                    "field": "[concat('tags[', parameters('tag3Name'), ']')]",
-                    "exists": "false"
-                },
-                {
-                    "field": "[concat('tags[', parameters('tag4Name'), ']')]",
-                    "exists": "false"
-                },
-                {
-                    "field": "[concat('tags[', parameters('tag5Name'), ']')]",
-                    "exists": "false"
+                  "anyof":[
+                      {
+                          "field": "[concat('tags[', parameters('tag1Name'), ']')]",
+                          "exists": "false"
+                      },
+                      {
+                          "field": "[concat('tags[', parameters('tag2Name'), ']')]",
+                          "exists": "false"
+                      },
+                      {
+                          "field": "[concat('tags[', parameters('tag3Name'), ']')]",
+                          "exists": "false"
+                      },
+                      {
+                          "field": "[concat('tags[', parameters('tag4Name'), ']')]",
+                          "exists": "false"
+                      },
+                      {
+                          "field": "[concat('tags[', parameters('tag5Name'), ']')]",
+                          "exists": "false"
+                      }
+                  ]
                 }
             ]
         },
