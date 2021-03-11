@@ -1,37 +1,44 @@
 {
-    "mode": "all",
+  "properties":{
+    "displayName": "Enforce mandatory tagging on Resource Groups - restricted values",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Enforces Mandatory Tagging on Resource Groups. Does not apply to resources or subscriptions."
+  },
     "policyRule": {
       "if": {
         "allOf":[
             {            
             "field": "type",
             "equals": "Microsoft.Resources/subscriptions/resourceGroups"
-            }
-        ],
-        "anyof": [
-          {
-            "field": "[concat('tags[', parameters('tag1Name'), ']')]",
-            "notin": "[parameters('tag1Value')]"
-          },
-          {
-            "field": "[concat('tags[', parameters('tag2Name'), ']')]",
-            "notin": "[parameters('tag2Value')]"
-          },
-          {
-            "field": "[concat('tags[', parameters('tag3Name'), ']')]",
-            "notin": "[parameters('tag3Value')]"
-          },
-          {
-            "field": "[concat('tags[', parameters('tag4Name'), ']')]",
-            "notin": "[parameters('tag4Value')]"
-          },
-          {
-            "field": "[concat('tags[', parameters('tag5Name'), ']')]",
-            "notin": "[parameters('tag5Value')]"
-          },
-          {
-            "field": "[concat('tags[', parameters('tag6Name'), ']')]",
-            "notin": "[parameters('tag6Value')]"
+            },
+            {
+            "anyof": [
+              {
+                "field": "[concat('tags[', parameters('tag1Name'), ']')]",
+                "notin": "[parameters('tag1Value')]"
+              },
+              {
+                "field": "[concat('tags[', parameters('tag2Name'), ']')]",
+                "notin": "[parameters('tag2Value')]"
+              },
+              {
+                "field": "[concat('tags[', parameters('tag3Name'), ']')]",
+                "notin": "[parameters('tag3Value')]"
+              },
+              {
+                "field": "[concat('tags[', parameters('tag4Name'), ']')]",
+                "notin": "[parameters('tag4Value')]"
+              },
+              {
+                "field": "[concat('tags[', parameters('tag5Name'), ']')]",
+                "notin": "[parameters('tag5Value')]"
+              },
+              {
+                "field": "[concat('tags[', parameters('tag6Name'), ']')]",
+                "notin": "[parameters('tag6Value')]"
+              }
+            ]
           }
         ]
       },

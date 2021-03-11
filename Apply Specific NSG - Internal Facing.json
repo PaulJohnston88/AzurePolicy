@@ -1,8 +1,9 @@
 {
     "properties": {
-      "displayName": "Apply Specific NSG - Internal Facing",
+      "displayName": "Apply Sspecific NSG - Internal Facing",
       "policyType": "Custom",
       "mode": "All",
+      "description": "Restricts the usage of NSGs to only those specific within the NSGid parameter",
       "parameters": {
         "nsgId": {
           "type": "Array",

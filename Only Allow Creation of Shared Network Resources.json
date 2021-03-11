@@ -1,9 +1,9 @@
 {
     "properties": {
-      "displayName": "Allow creation of approved general resources",
+      "displayName": "Allow creation of general resources and shared networking resources",
       "policyType": "Custom",
       "mode": "All",
-      "description": "Allows creation of general resources such as Virtual Networks and Storage Accounts",
+      "description": "Allows creation of both general resources and shared networking resources such as Virtual Machines and VPN Gateways",
       "parameters": {
         "effect": {
           "type": "String",
@@ -31,7 +31,7 @@
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.Network/loadBalancers*"
+                "equals": "Microsoft.Network/loadBalancers"
               }
             },
             {
@@ -43,73 +43,91 @@
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.Network/networkWatchers*"
+                "equals": "Microsoft.Network/networkSecurityGroups"
               }
             },
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.Network/networkSecurityGroups*"
+                "like": "Microsoft.Network/expressRoute*"
               }
             },
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.Network/privateEndpoint*"
+                "equals": "Microsoft.Network/routeTables"
               }
             },
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.Network/routeTables*"
+                "equals": "Microsoft.Network/localNetworkGateways"
               }
             },
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.Network/applicationSecurityGroups*"
+                "equals": "Microsoft.Network/p2sVpnGateways"
               }
             },
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.Network/networkInterfaces*"
+                "like": "Microsoft.Network/PublicIP*"
               }
             },
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.Compute*"
+                "equals": "Microsoft.Network/virtualHubs"
               }
             },
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.Storage*"
+                "equals": "Microsoft.Network/virtualWans"
               }
             },
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.KeyVault*"
+                "equals": "Microsoft.Network/virtualRouters"
               }
             },
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.AAD*"
+                "equals": "Microsoft.Network/vpnGateways"
               }
             },
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.Sql*"
+                "equals": "Microsoft.Network/vpnSites"
               }
             },
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.SqlVirtualMachine*"
+                "equals": "Microsoft.Network/connections"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "equals": "Microsoft.Network/serviceEndpointPolicies"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "equals": "Microsoft.Network/networkVirtualAppliance*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "equals": "Microsoft.Network/applicationSecurityGroups"
               }
             },
             {
@@ -121,37 +139,7 @@
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.EventHub*"
-              }
-            },
-            {
-              "not": {
-                "field": "type",
-                "like": "Microsoft.Logic*"
-              }
-            },
-            {
-              "not": {
-                "field": "type",
                 "like": "Microsoft.Portal*"
-              }
-            },
-            {
-              "not": {
-                "field": "type",
-                "like": "Microsoft.ADHybridHealthService*"
-              }
-            },
-            {
-              "not": {
-                "field": "type",
-                "like": "Microsoft.Kubernetes*"
-              }
-            },
-            {
-              "not": {
-                "field": "type",
-                "like": "Microsoft.KubernetesConfiguration*"
               }
             },
             {
@@ -163,37 +151,7 @@
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.ContainerRegistry*"
-              }
-            },
-            {
-              "not": {
-                "field": "type",
-                "like": "Microsoft.ApiManagement*"
-              }
-            },
-            {
-              "not": {
-                "field": "type",
-                "like": "Microsoft.Databricks*"
-              }
-            },
-            {
-              "not": {
-                "field": "type",
-                "like": "Microsoft.DataFactory*"
-              }
-            },
-            {
-              "not": {
-                "field": "type",
                 "like": "Microsoft.Security*"
-              }
-            },
-            {
-              "not": {
-                "field": "type",
-                "like": "Microsoft.Web*"
               }
             },
             {
@@ -223,7 +181,13 @@
             {
               "not": {
                 "field": "type",
-                "like": "Microsoft.GuestConfiguration*"
+                "like": "Microsoft.Network/networkWatchers*"
+              }
+            },
+            {
+              "not": {
+                "field": "type",
+                "like": "Microsoft.Network/virtualNetworkGateways*"
               }
             }
           ]

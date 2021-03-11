@@ -1,5 +1,10 @@
 {
-    "mode": "all",
+  "properties":{
+    "displayName": "Enforce mandatory tagging on Resource Groups - freeform",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Enforces Mandatory Tagging on Resource Groups. Does not apply to resources or subscriptions."
+  },
     "policyRule": {
         "if": {
             "allOf":[

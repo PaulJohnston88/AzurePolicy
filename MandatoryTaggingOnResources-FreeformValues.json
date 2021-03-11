@@ -1,5 +1,10 @@
 {
+  "properties":{
+    "displayName": "Enforce mandatory tagging on resources - freeform",
+    "policyType": "Custom",
     "mode": "Indexed",
+    "description": "Enforces Mandatory Tagging on Resources. Does not apply to Resource Groups."
+  },
     "policyRule": {
         "if": {
             "anyof":[
