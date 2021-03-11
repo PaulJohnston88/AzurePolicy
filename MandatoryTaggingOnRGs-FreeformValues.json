@@ -1,47 +1,47 @@
 {
-  "properties":{
+  "Properties":{
     "displayName": "Enforce mandatory tagging on Resource Groups - freeform",
     "policyType": "Custom",
     "mode": "All",
     "description": "Enforces Mandatory Tagging on Resource Groups. Does not apply to resources or subscriptions."
   },
-    "policyRule": {
-        "if": {
-            "allOf":[
-                {
-                    "field": "type",
-                    "equals": "Microsoft.Resources/subscriptions/resourceGroups"
-                },
-                {
-                  "anyof":[
-                      {
-                          "field": "[concat('tags[', parameters('tag1Name'), ']')]",
-                          "exists": "false"
-                      },
-                      {
-                          "field": "[concat('tags[', parameters('tag2Name'), ']')]",
-                          "exists": "false"
-                      },
-                      {
-                          "field": "[concat('tags[', parameters('tag3Name'), ']')]",
-                          "exists": "false"
-                      },
-                      {
-                          "field": "[concat('tags[', parameters('tag4Name'), ']')]",
-                          "exists": "false"
-                      },
-                      {
-                          "field": "[concat('tags[', parameters('tag5Name'), ']')]",
-                          "exists": "false"
-                      }
-                  ]
-                }
-            ]
-        },
-        "then": {
-          "effect": "deny"
+  "policyRule": {
+    "if": {
+      "allOf":[
+          {            
+          "field": "type",
+          "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+          },
+          {
+          "anyof": [
+            {
+              "field": "[concat('tags[', parameters('tag1Name'), ']')]",
+              "exists": "false"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag2Name'), ']')]",
+              "exists": "false"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag3Name'), ']')]",
+              "exists": "false"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag4Name'), ']')]",
+              "exists": "false"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag5Name'), ']')]",
+              "exists": "false"
+            }
+          ]
         }
+      ]
     },
+    "then": {
+      "effect": "deny"
+    }
+  },
     "parameters": {
       "tag1Name": {
         "type": "String",
@@ -58,7 +58,7 @@
           "description": "Name of the tag, such as 'ApplicationID'"
         },
         "defaultValue": "AppID"
-      },   
+      },  
       "tag3Name": {
         "type": "String",
         "metadata": {
@@ -74,7 +74,7 @@
           "description": "Name of the tag, such as 'ApplicationOwner'"
         },
         "defaultValue": "AppOwner"
-      },    
+      },  
       "tag5Name": {
         "type": "String",
         "metadata": {
@@ -84,4 +84,4 @@
         "defaultValue": "MaintenanceWindow"
       }
     }
-  }
+}

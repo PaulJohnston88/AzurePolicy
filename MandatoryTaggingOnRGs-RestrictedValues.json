@@ -1,5 +1,5 @@
 {
-  "roperties":{
+  "Properties":{
     "displayName": "Enforce mandatory tagging on Resource Groups - restricted values",
     "policyType": "Custom",
     "mode": "All",

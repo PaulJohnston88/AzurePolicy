@@ -1,5 +1,5 @@
 {
-  "properties":{
+  "Properties":{
     "displayName": "Enforce mandatory tagging on resources - freeform",
     "policyType": "Custom",
     "mode": "Indexed",
