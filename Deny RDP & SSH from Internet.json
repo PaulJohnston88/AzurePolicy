@@ -1,5 +1,10 @@
 {
-  "mode": "All",
+  "Properties":{
+    "displayName": "Deny RDP & SSH from Internet.json",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Prevents RDP & SSH on NSG ruleset."
+  }
   "policyRule": {
     "if": {
       "anyOf": [
