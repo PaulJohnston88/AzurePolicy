@@ -1,0 +1,53 @@
+{
+    "properties": {
+        "displayName": "NSG X on every subnet within the Public Management Group",
+        "description": "This policy enforces a specific NSG on every subnet",
+        "mode": "All",
+        "parameters": {
+            "nsgId": {
+                "type": "Array",
+                "metadata": {
+                    "description": "Resource Ids of the allowed Network Security Groups",
+                    "displayName": "NSG Id"
+                },
+                "allowedValues": [
+                    "/subscriptions/SUBSCRIPTIONID/resourceGroups/RGNAME/providers/Microsoft.Network/networkSecurityGroups/RGNAME-CORP-NEU-NSG-001",
+                    "/subscriptions/SUBSCRIPTIONID/resourceGroups/RGNAME/providers/Microsoft.Network/networkSecurityGroups/RGNAME-CORP-WEU-NSG-001"                   
+                ]
+            }
+        },
+        "policyRule": {
+            "if": {
+                "anyOf": [
+                    {
+                        "allOf": [
+                            {
+                                "field": "type",
+                                "equals": "Microsoft.Network/virtualNetworks"
+                            },
+                            {
+                                "field": "Microsoft.Network/virtualNetworks/subnets[*].networkSecurityGroup.id",
+                                "notin": "[parameters('nsgId')]"
+                            }
+                        ]
+                    },
+                    {
+                        "allOf": [
+                            {
+                                "field": "type",
+                                "equals": "Microsoft.Network/virtualNetworks/subnets"
+                            },
+                            {
+                                    "field": "Microsoft.Network/virtualNetworks/subnets/networkSecurityGroup.id",
+                                    "notin": "[parameters('nsgId')]"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "then": {
+                "effect": "deny"
+            }
+        }
+    }
+}

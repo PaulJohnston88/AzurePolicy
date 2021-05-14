@@ -62,9 +62,9 @@
           "description": "Value of the tag, such as 'ASUX'"
         },
         "allowedValues": [
-          "ASUX",
-          "SPS",
-          "Enterprise"
+          "Finance",
+          "HR",
+          "IT"
         ]
       },
       "tag2Name": {
@@ -82,16 +82,10 @@
           "description": "Value of the tag, such as 'EDS'"
         },
         "allowedValues": [
-          "ASUX - GSS",
           "Engineering",
-          "SPS-CS",
-          "EDS",
-          "Enterprise - ERP",
-          "BI",
           "Finance",
           "HR",
-          "Marketing",
-          "SCM"
+          "Marketing"
         ]
       },     
       "tag3Name": {
@@ -149,16 +143,16 @@
         "type": "Array",
         "metadata": {
           "displayName": "Tag 5 Value",
-          "description": "Value of the tag, such as 'Aptiv Internal'"
+          "description": "Value of the tag, such as 'Internal'"
         },
         "allowedValues": [
-          "Aptiv Secret",
-          "Aptiv Confidential Business",
-          "Aptiv Confidential Personal",
-          "Aptiv Sensitive Business",
-          "Aptiv Sensitive Personal",
-          "Aptiv Internal",
-          "Aptiv Public"
+          "Secret",
+          "Confidential Business",
+          "Confidential Personal",
+          "Sensitive Business",
+          "Sensitive Personal",
+          "Internal",
+          "Public"
         ]
       },      
       "tag6Name": {
