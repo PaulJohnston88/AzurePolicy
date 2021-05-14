@@ -1,0 +1,78 @@
+{
+  "Properties":{
+    "displayName": "Deny RDP & SSH from Internet.json",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Prevents RDP & SSH on NSG ruleset."
+  }
+  "policyRule": {
+    "if": {
+      "anyOf": [
+        {
+          "allOf": [
+            {
+              "field": "type",
+              "equals": "Microsoft.Network/networkSecurityGroups/securityRules"
+            },
+            {
+              "not": {
+                "field": "Microsoft.Network/networkSecurityGroups/securityRules/sourceAddressPrefix",
+                "notEquals": "*"
+              }
+            },
+            {
+              "anyOf": [
+                {
+                  "field": "Microsoft.Network/networkSecurityGroups/securityRules/destinationPortRange",
+                  "equals": "22"
+                },
+                {
+                  "field": "Microsoft.Network/networkSecurityGroups/securityRules/destinationPortRange",
+                  "equals": "3389"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "field": "type",
+              "equals": "Microsoft.Network/networkSecurityGroups"
+            },
+            {
+              "count": {
+                "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+                "where": {
+                  "allOf": [
+                    {
+                      "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].sourceAddressPrefix",
+                      "equals": "*"
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                          "equals": "22"
+                        },
+                        {
+                          "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                          "equals": "3389"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "greater": 0
+            }
+          ]
+        }
+      ]
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {}
+}
